@@ -1,1 +1,75 @@
-../../new-uploader
+#!/usr/bin/php
+<?php
+ 
+$pwd=getcwd(); 
+//config
+$uploader_install_dir="/var/www/uploader";
+$uploader_url="http://hiro2.home.e23.ch/uploader/";
+chdir($uploader_install_dir);
+
+
+function get_input($msg,$default=false){
+	if ($default){
+		$txt="$msg [ $default ]: "; 
+	} else {
+		$txt="$msg: "; 
+	}
+	fwrite(STDOUT,$txt);
+	$varin = trim(fgets(STDIN));
+	if ($default and !$varin){
+		return $default;
+	}
+	return $varin;
+}
+ 
+include($uploader_install_dir."/php/functions.php");
+$def=parse_inifile($uploader_install_dir."/conf/default");
+$gc=get_globalconf();
+$num=get_num();
+$num++;
+$autoname=dec2any($num);
+
+
+$name=get_input("Name","Uploader #{$autoname}");
+$desc=get_input("Description",$def['DESC']);
+$pw=get_input("Password",$def['PASSWORD']);
+$size=get_input("Max. Size",$def['MAXSIZE']);
+$mail=get_input("Mail",$def['MAIL']);
+$types=get_input("Allowed File Types (* or Comma separated)",$def['TYPES']);
+
+$url=get_input("ID [ $autoname ]");
+if (!$url){
+	set_num($num);
+	$url=$autoname;
+}
+
+$ul_dir=$udc="{$gc["DATADIR"]}/{$url}/";
+if (file_exists($ul_dir)){
+	die("\nUploader with this ID allready exists\n");
+}
+$ul_dir=escapeshellarg($ul_dir);
+`mkdir $ul_dir`;
+
+
+$cfile=<<<EOF
+MAIL=$mail
+PASSWORD=$pw
+MAXSIZE=$size
+NAME=$name
+DESC=$desc
+TYPES=$types
+EOF;
+file_put_contents("{$udc}config",$cfile);
+`chmod 744 {$ul_dir}config`;
+
+
+echo "
+Uploader created. URL:
+
+{$uploader_url}{$url}/
+
+";
+chdir($pwd);
+
+
+?>

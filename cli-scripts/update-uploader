@@ -1,1 +1,17 @@
-../../update-uploader
+#!/bin/bash
+
+if [[ "$1" == "" ]]; then 
+	echo "Usage: $0 REMOTE"
+	echo "Example: $0 user@example.com/var/www/uploader"
+	exit 0;
+fi;
+
+REMOTE=$1
+
+rsync -e ssh -avz --delete-after ./git_repo/css $REMOTE
+rsync -e ssh -avz --delete-after ./git_repo/img $REMOTE
+rsync -e ssh -avz --delete-after ./git_repo/js $REMOTE
+rsync -e ssh -avz --delete-after ./git_repo/php $REMOTE
+rsync -e ssh -avz --delete-after ./git_repo/tpl $REMOTE
+rsync -e ssh -avz --delete-after ./git_repo/index.php $REMOTE
+rsync -e ssh -avz --delete-after ./git_repo/.htaccess $REMOTE

@@ -1,1 +1,13 @@
-../../uploader-get
+#!/bin/bash
+
+
+if [[ "$1" == "" && "$2" == ""  && "$3"=="" ]]; then
+	echo "Usage: $0 REMOTE_DIR LOCALDIR UPLOADER_NAME "
+	echo "Example: $0 user@example.com/var/www/uploader /tmp/testget testuploader"
+	exit 0;
+fi;
+REMOTE=$1
+ID=$3
+RDIR="$REMOTE/$ID/*"
+
+rsync -avz --delete-after --exclude "config" --exclude "comments" $RDIR $2

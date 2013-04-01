@@ -87,7 +87,8 @@ function get_id(){
 
 function get_baseurl(){
 	$protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
-	$url=$protocol."://".$_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME'])."/";
+	$url=str_replace("//","/",$_SERVER['SERVER_NAME'].dirname($_SERVER['SCRIPT_NAME'])."/");
+	$url=$protocol."://".$url;
 	return $url;
 }
 

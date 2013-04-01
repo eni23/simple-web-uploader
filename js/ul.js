@@ -170,4 +170,9 @@ $(document).ready(function(){
 	update_filelist();
 	update_size();
 	update_comments();
+	
+	window.setInterval(15000,update_filelist);
+	window.setInterval(15000,update_size);
+	window.setInterval(15000,update_comments);
+	
 });

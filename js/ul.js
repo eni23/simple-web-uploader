@@ -171,8 +171,9 @@ $(document).ready(function(){
 	update_size();
 	update_comments();
 	
-	window.setInterval(15000,update_filelist);
-	window.setInterval(15000,update_size);
-	window.setInterval(15000,update_comments);
+	update_time=15000; //15 secounds
+	window.setInterval(update_filelist,update_time);
+	window.setInterval(update_size,update_time);
+	window.setInterval(update_comments,update_time);
 	
 });

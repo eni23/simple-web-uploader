@@ -2,11 +2,3 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule . index.php [L]
-
-Order Deny,Allow
-Deny from all
-Allow from 127.0.0.1
-
-<FilesMatch "\.(php|jpg|png|css|jss)$">
-Allow from all
-</FilesMatch>

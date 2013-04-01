@@ -105,6 +105,10 @@ function get_num(){
 	}
 }
 
+function set_num($num){
+	file_put_contents("./conf/num",$num);
+}
+
 
 function parse_inifile($inifile){
 		$result = $matches = array();

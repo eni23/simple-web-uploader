@@ -1,5 +1,5 @@
-MAIL=5@e23.ch
-PASSWORD=test
+MAIL=example@example.com
+PASSWORD=password
 MAXSIZE=50M
 NAME=Upload
 DESC=Upload your Files!

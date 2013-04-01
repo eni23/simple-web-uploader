@@ -75,7 +75,7 @@ div.fileitem div.mime_application-x-rar { background-image:url(../img/applicatio
 div.fileitem div.mime_application-x-rpm { background-image:url(../img/application-x-rpm.png); }
 div.fileitem div.mime_application-x-ruby { background-image:url(../img/application-x-ruby.png); }
 div.fileitem div.mime_application-x-scribus { background-image:url(../img/application-x-scribus.png); }
-div.fileitem div.mime_application-x-shellscript { background-image:url(../img/application-x-shellscript.png); }
+div.fileitem div.mime_application-x-shellscript, div.fileitem div.mime_text-x-shellscript { background-image:url(../img/application-x-shellscript.png); }
 div.fileitem div.mime_application-x-shockwave-flash { background-image:url(../img/application-x-shockwave-flash.png); }
 div.fileitem div.mime_application-x-sln { background-image:url(../img/application-x-sln.png); }
 div.fileitem div.mime_application-x-sqlite2 { background-image:url(../img/application-x-sqlite2.png); }

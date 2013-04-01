@@ -8,10 +8,10 @@ fi;
 
 REMOTE=$1
 
-rsync -e ssh -avz --delete-after ./git_repo/css $REMOTE
-rsync -e ssh -avz --delete-after ./git_repo/img $REMOTE
-rsync -e ssh -avz --delete-after ./git_repo/js $REMOTE
-rsync -e ssh -avz --delete-after ./git_repo/php $REMOTE
-rsync -e ssh -avz --delete-after ./git_repo/tpl $REMOTE
-rsync -e ssh -avz --delete-after ./git_repo/index.php $REMOTE
-rsync -e ssh -avz --delete-after ./git_repo/.htaccess $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/css $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/img $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/js $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/php $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/tpl $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/index.php $REMOTE
+rsync -e ssh -avz --delete-after --copy-links ./git_repo/.htaccess $REMOTE

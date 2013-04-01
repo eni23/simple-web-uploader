@@ -1,0 +1,6 @@
+MAIL=5@e23.ch
+PASSWORD=test
+MAXSIZE=50M
+NAME=Upload
+DESC=Upload your Files!
+TYPES=*

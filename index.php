@@ -80,6 +80,13 @@ switch ($_REQUEST['m']){
 			}
 			if (!$error){
 				$newfile="{$dir}/".urldecode($file['name']);
+				$i=0;
+				while(file_exists($newfile)){
+					$newfile="{$dir}/".urldecode($file['name']);
+					$no_ext=substr($newfile,0,strlen($newfile)-(strlen($ext)+1));
+					$newfile=$no_ext."_{$i}.{$ext}";
+					$i++;
+				}
 				move_uploaded_file($file['tmp_name'],$newfile);	
 				$arr=array("name"=>$file['name'],"type"=>$file['type'],"size"=>$file['size']);
 				echo json_encode($arr);
